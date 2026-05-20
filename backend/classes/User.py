@@ -1,0 +1,99 @@
+from typing import Optional, Dict, Any
+# TODO: Import password hashing library for secure password storage
+# TODO: Import library for secure token generation
+
+import bcrypt 
+
+
+class User:
+    def __init__(
+        self,
+        email,
+        name,
+        password=None,
+        password_hash=None,
+        session_token=None,
+        # TODO: Add CSRF token parameter
+    ):
+        """Initialised new user instance."""
+        self.__email = email
+        self.__name = name
+
+        # __init__() is used for creating a new User instance via cls(...) or manual instantiation
+        if password:
+            # TODO: Implement password hashing instead of storing plain text
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            self.__password = hashed_password
+        else:
+            raise ValueError("Either password or password_hash must be provided")
+
+        self.__session_token = session_token
+        # TODO: Initialize CSRF token storage
+        # tokens are None - iff no user-session
+
+    # private: Generate secure hexadecimal token
+    def __generate_token(self):
+        # TODO: Implement cryptographically secure token generation
+        return "insecure_token_" + self.__email
+
+    # public: Init user session
+    def initiate_user_session(self):
+        # TODO: Generate CSRF token along with session token
+        self.__session_token = self.__generate_token()
+        return self.__session_token, None  # TODO: Return CSRF token
+
+    # public: Remove user session
+    def revoke_user_session(self):
+        self.__session_token = None
+        # TODO: Clear CSRF token on session revocation
+
+    # public: Verify password input
+    def verify_password(self, password_input):
+        # TODO: Implement secure password verification using hashing
+        return self.__password == password_input
+
+    # public: Session Token Property
+    @property
+    def session_token(self):
+        return self.__session_token
+
+    # TODO: Add CSRF token property getter
+
+    # public: mail Property
+    @property
+    def email(self):
+        return self.__email
+
+    # public: Name Property
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, new_name):
+        self.__name = new_name
+
+    @email.setter
+    def email(self, new_email):
+        self.__email = new_email
+
+    # public: convert fron object -> dict
+    def to_dict(self):
+        return {
+            "email": self.__email,
+            "name": self.__name,
+            "password_hash": self.__password,
+            "session_token": self.__session_token,
+            # TODO: Include CSRF token in dictionary
+        }
+
+    # public: cls() used in database/data.py to convert JSON -> in-memory user object
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            email=data["email"],
+            name=data["name"],
+            password_hash=data["password_hash"],
+            session_token=data.get("session_token"),
+            # TODO: Load CSRF token from dictionary
+        )

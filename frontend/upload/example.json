@@ -1,0 +1,50 @@
+{
+    "name": "Quiz about CSE",
+    "questions": [
+      {
+        "id": "q1-best-lecturers",
+        "text": "Who are the best lecturers at UNSW CSE?",
+        "type": "Multi-Choice",
+        "summary": "Pick the goats of the CSE teaching squad.",
+        "visual": "",
+        "options": [
+          "Hayden Smith",
+          "Andrew Taylor",
+          "Jas",
+          "Jake Ranzella",
+          "Kevin Elphinstone"
+        ],
+        "correctAnswers": ["Hayden Smith", "Andrew Taylor"],
+        "duration": 1,
+        "points": 10
+      },
+      {
+        "id": "q2-best-course",
+        "text": "What is the best CSE course at UNSW?",
+        "type": "Single-Choice",
+        "summary": "Select the single greatest course.",
+        "visual": "",
+        "options": [
+          "COMP1511",
+          "COMP2041",
+          "COMP6080",
+          "COMP6841"
+        ],
+        "correctAnswers": ["COMP2041"],
+        "duration": 60,
+        "points": 5
+      },
+      {
+        "id": "q3-what-does-cse-mean",
+        "text": "What does CSE stand for?",
+        "type": "Judgement",
+        "summary": "Provide the full meaning of the abbreviation.",
+        "visual": "",
+        "options": [],
+        "correctAnswers": ["Computer Science and Engineering"],
+        "duration": 10,
+        "points": 5
+      }
+    ]
+  }
+  

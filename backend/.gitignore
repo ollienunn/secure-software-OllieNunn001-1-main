@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+.pytest_cache
+env
+database/users.database.json
+database/games.database.json
+database/sessions.database.json
