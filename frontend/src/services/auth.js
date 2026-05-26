@@ -15,9 +15,9 @@ export const adminAuthRegister = async (email, password, name) => {
     if (response.error) {
         throw new Error(response.error);
     }
-    localStorage.setItem("session_token", response.session_token);
+    sessionStorage.setItem("session_token", response.session_token);
     // TODO: Store CSRF token in secure storage (sessionStorage recommended)
-    localStorage.setItem("owner", email);
+    sessionStorage.setItem("owner", email);
     return response;
 };
 
@@ -35,9 +35,9 @@ export const adminAuthLogin = async (email, password) => {
     if (response.error) {
         throw new Error(response.error);
     }
-    localStorage.setItem("session_token", response.session_token);
+    sessionStorage.setItem("session_token", response.session_token);
     // TODO: Store CSRF token in secure storage (sessionStorage recommended)
-    localStorage.setItem("owner", email);
+    sessionStorage.setItem("owner", email);
     return response;
 }
 

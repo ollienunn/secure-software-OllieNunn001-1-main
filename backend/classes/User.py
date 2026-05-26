@@ -29,7 +29,7 @@ class User:
 
         self.__session_token = session_token
         # TODO: Initialize CSRF token storage
-        # tokens are None - iff no user-session
+        # tokens are None - if no user-session
 
     # private: Generate secure hexadecimal token
     def __generate_token(self):
