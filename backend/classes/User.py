@@ -21,7 +21,7 @@ class User:
 
         # __init__() is used for creating a new User instance via cls(...) or manual instantiation
         if password:
-            # TODO: Implement password hashing instead of storing plain text
+            ## Finished i think # TODO: Implement password hashing instead of storing plain text 
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             self.__password = hashed_password
         else:
